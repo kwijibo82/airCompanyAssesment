@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<fieldset class="inputDataFiledSet">
+    <legend class="mainLegend">Vueling Assesment</legend>
+
+
+
+    @using (Html.BeginForm("getAllRates", "Home", FormMethod.Post))
+    {
+
+        <button type="submit" class="btn-primary">Show all rates</button>
+    }
+
+    @using (Html.BeginForm("getAllTransactions", "Home", FormMethod.Post))
+    {
+
+        <button type="submit" class="btn-primary">Show all transactions</button>
+    }
+
+    @model Transaction
+
+    @using (Html.BeginForm("getTransactionsBySKU", "Home", FormMethod.Post))
+    {
+        <button type="submit" class="btn-primary">Find transactions by SKU</button>
+        <p>SKU:</p>
+        @Html.TextBoxFor(model => model.sku);
+
+        <p>Total:</p>
+        @Html.TextBox("total", null, new { rows = 40, cols = 1 })
+    }
+
+
+</fieldset>
+
+
+<fieldset class="resulDataFiledSet">
+    <legend class=resultLegend>Results</legend>
+
+    @Html.TextArea("results",
+            new { id = "totalTextArea", cols = "120", rows = "20", wrap = "virtual" })
+
+</fieldset>
+
+           
